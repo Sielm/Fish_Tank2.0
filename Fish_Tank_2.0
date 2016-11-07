@@ -1,0 +1,113 @@
+background(157, 198, 217);
+//kelp
+
+fill(20, 153, 29);
+noStroke();
+beginShape();
+curveVertex(392,  529);
+curveVertex(239,  567);
+curveVertex(391,  182);
+curveVertex(327,  271);
+curveVertex(325, 119);
+curveVertex(161, 445);
+endShape();
+
+// the ground
+noStroke();
+fill(198, 201, 175);
+ellipse(100, 400, 250, 80);
+ellipse(300, 410, 400, 90);
+ellipse(375, 400, 300, 90);
+
+//rocks
+fill(156, 148, 148);
+ellipse(75, 370, 70, 80);
+ellipse(120, 370, 30, 40);
+fill(198,201,175);
+rect(40, 370, 130, 40); 
+
+//boat code
+var generateBoat = function() {
+    //functions
+    var boatX = random(150,300);
+    var boatY = -10;
+    var boatLength = 200;
+    var boatHeight = 80;
+    var fishingLine = random(250,300);
+// boat
+    fill(74, 97, 186);
+    ellipse(boatX, boatY, boatLength, boatHeight);
+    rect(boatX-100,boatY,boatLength-100,boatHeight-40.51 );
+    rect(boatX-5,boatY+9,boatLength-190,boatHeight-50);
+
+    fill(184, 184, 184);
+    ellipse(boatX,boatY,boatLength-20,boatHeight-20);
+    rect(boatX-100,boatY,boatLength-100,boatHeight-51);
+    rect(boatX-5,boatY-1,boatLength-190,boatHeight-50);
+// motor
+    rect(boatX-130,boatY-5,boatLength-182,boatHeight-40);
+    stroke(15, 1, 15);
+    line(boatX-130, 20,boatX-137, 20);
+    line(boatX-137, 10,boatX-137, 30);
+//fishing line
+    line(boatX+100,boatY+10,fishingLine,boatHeight+70);
+};
+generateBoat();
+noStroke();
+var generateFish = function() {
+    //functions
+    var bodylength = random(50,100);
+    var bodywidth = random(30, 50);
+    var bodyX = random(50,375);
+    var bodyY = random(70,350);
+    var tailG = random(10,255);
+    var tailB = random(10,255);
+    var bodyG = random(10,255);
+    var bodyB = random(10,255);
+
+    //tail
+    fill(252, tailG, tailB);
+    triangle(bodyX-50, bodyY+20, bodyX-50, bodyY-20, bodyX, bodyY);
+  
+    // body
+    fill(255, bodyG, bodyB);
+    ellipse(bodyX, bodyY, bodylength, bodywidth);
+    
+    // eyes
+    fill(46, 46, 41);
+    ellipse(bodyX+20, bodyY, 10, 10);
+    
+    bodyX = bodyX + 1;
+};
+
+var i = 0;
+
+for (i = random(0,3); i < 4; i = i + 1) {
+    generateFish();
+}
+
+//urchin code
+var urchinX = random(20,350);
+var urchinY = 370;
+var spineLeftX = urchinX-50;
+var spineRightX = urchinX+50;
+var spineY = 330;
+var spineTopX = urchinX-55;
+var spineTopY = urchinY-40;
+var spineBotX = urchinX-55;
+var spineBotY = urchinY + 40;
+var urchinColor = random(20,300);
+
+fill(urchinColor, 0, 87);
+ellipse(urchinX,urchinY,50,50);
+var n = 0;
+for (n = 0; n < 10; n = n + 1) {
+    spineY = spineY+10;
+    spineTopX = spineTopX + 10;
+    spineBotX = spineBotX + 10;
+    triangle(urchinX,urchinY,urchinX,urchinY+10, spineRightX, spineY);
+    triangle(urchinX,urchinY,urchinX,urchinY+10, spineLeftX, spineY);
+    triangle(urchinX +10, urchinY, urchinX-10, urchinY, spineTopX, spineTopY);
+    triangle(urchinX +10, urchinY, urchinX-10, urchinY, spineBotX, spineBotY);
+}
+
