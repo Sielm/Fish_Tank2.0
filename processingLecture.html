@@ -10,18 +10,20 @@
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
         
         HorizontalLine fastLine = new HorizontalLine(50, 2.5);
-        
-        Fish randomFish = new Fish(200, 100);  
+        var fishWidth = random (30,50);
+        var fishLength = random (50,100);
+
+        Fish randomFish = new Fish(fishWidth, fishLength);  
         
         int WINDOW_WIDTH = 600;
         int WINDOW_HEIGHT = 600;
         
         int REFRESH_RATE_PER_SECOND = 30;
-        int GREY = 204;
         //runs once at the start of the program 
         void setup() 
         {
-        
+          
+         
           size(WINDOW_WIDTH, WINDOW_HEIGHT);
         
           frameRate(REFRESH_RATE_PER_SECOND);//how often per second the draw function is called 
@@ -31,14 +33,38 @@
         
         //called repeatedly 
         void draw() { 
+          background(157, 198, 217);
+          //kelp
+		  fill(20, 153, 29);
+		  noStroke();
+		  beginShape();
+		  curveVertex(592,  729);
+		  curveVertex(439,  767);
+		  curveVertex(591,  382);
+		  curveVertex(527,  471);
+		  curveVertex(525, 319);
+		  curveVertex(361, 645);
+		  endShape();
+          //the ground
+          noStroke();
+	  	  fill(198, 201, 175);
+		  ellipse(300, 600, 650, 80);
+		  ellipse(500, 610, 800, 90);
+		  ellipse(575, 600, 700, 90);
+		  //the rocks
+		  fill(156, 148, 148);
+		  ellipse(275, 570, 70, 80);
+		  ellipse(320, 570, 30, 40);
+		  fill(198,201,175);
+		  rect(240, 570, 330, 240);
+
+		  slowLine.updateAndRedraw(); 
         
-          background(GREY);
-        
-          slowLine.updateAndRedraw(); 
-        
-          fastLine.updateAndRedraw();  
-          
+          fastLine.updateAndRedraw();
+
+
           randomFish.drawFish();
+          randomFish.swim();
         
         } 
         
@@ -98,7 +124,7 @@
         		bodyLength = bl; 
         		tailHeight = random(20,30); 
         		tailWidth = random(10, 15);
-        		bodyColor = color(255, 0, 0); 
+        		bodyColor = color(random(0,255), random(0,255), random(0,255)); 
         		centerX = random(100, 400);
         		centerY = random(100, 400); 
         		
@@ -118,9 +144,14 @@
         		// eye
         		fill(33, 33, 33);
         		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+
+
         	
         	}
-        
+        	void swim()
+        	{
+        	centerX = centerX + 2;
+        	}
         }
         </script> 
     </head>
