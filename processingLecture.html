@@ -58,13 +58,12 @@
 		  fill(198,201,175);
 		  rect(240, 570, 330, 240);
 
-		  slowLine.updateAndRedraw(); 
-        
-          fastLine.updateAndRedraw();
+		  
 
 
           randomFish.drawFish();
-          randomFish.swim();
+          randomFish.updateAndSwim();
+          
         
         } 
         
@@ -148,9 +147,23 @@
 
         	
         	}
+        	void updateAndSwim()
+        	{
+        		swim();
+        		updateFish();
+        	}
+
+
+
         	void swim()
         	{
         	centerX = centerX + 2;
+        	}
+        	void updateFish()
+        	{
+        		if (centerX > 600){
+        			centerX = 0;
+        		}
         	}
         }
         </script> 
