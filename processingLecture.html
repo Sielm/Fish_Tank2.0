@@ -7,9 +7,7 @@
         
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
         
-        HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
-        
-        HorizontalLine fastLine = new HorizontalLine(50, 2.5);
+        ArrayList<Fish> fishList;
         var fishWidth = random (30,50);
         var fishLength = random (50,100);
 
@@ -67,48 +65,6 @@
         
         } 
         
-         
-        
-        class HorizontalLine { 
-          
-          //attributes
-          float ypos, speed; 
-        
-          //constructor 
-          HorizontalLine (float y, float s) {  
-        
-            ypos = y; 
-        
-            speed = s; 
-        
-          } 
-          
-          void updateAndRedraw() {
-          	update();
-          	drawLine();
-          }
-          
-          void update() 
-          { 
-        
-            ypos += speed; 
-        
-            if (ypos > height) 
-            { 
-        
-              ypos = 0; 
-        
-            } 
-        
-        
-          } 
-          
-          void drawLine() 
-          {
-          	 line(0, ypos, width, ypos); 
-		  }
-        
-        }
         
         class Fish 
         {
