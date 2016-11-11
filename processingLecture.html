@@ -10,8 +10,7 @@
         ArrayList<Fish> fishList;
         var fishWidth = random (30,50);
         var fishLength = random (50,100);
-
-        Fish randomFish = new Fish(fishWidth, fishLength);  
+ 
         
         int WINDOW_WIDTH = 600;
         int WINDOW_HEIGHT = 600;
@@ -21,7 +20,12 @@
         void setup() 
         {
           
-         
+          fishList = new ArrayList<Fish>();
+          var numberOfFish = random(1,7);
+          for(var i = 0; i < numberOfFish; i++) {
+			fishList.add(new Fish(fishWidth,fishLength));
+		  }
+          
           size(WINDOW_WIDTH, WINDOW_HEIGHT);
         
           frameRate(REFRESH_RATE_PER_SECOND);//how often per second the draw function is called 
@@ -57,11 +61,12 @@
 		  rect(240, 570, 330, 240);
 
 		  
-
-
-          randomFish.drawFish();
-          randomFish.updateAndSwim();
           
+          for(var i = 0; i < fishList.size(); i++) {
+				Fish currentFish = fishList.get(i); 
+				currentFish.drawFish();
+				currentFish.updateAndSwim();
+			} 
         
         } 
         
