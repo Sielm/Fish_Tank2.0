@@ -25,7 +25,6 @@
           for(var i = 0; i < numberOfFish; i++) {
 			fishList.add(new Fish(fishWidth,fishLength));
 		  }
-          
           size(WINDOW_WIDTH, WINDOW_HEIGHT);
         
           frameRate(REFRESH_RATE_PER_SECOND);//how often per second the draw function is called 
@@ -59,53 +58,59 @@
 		  ellipse(320, 570, 30, 40);
 		  fill(198,201,175);
 		  rect(240, 570, 330, 240);
-
+		  
 		  
           
           for(var i = 0; i < fishList.size(); i++) {
 				Fish currentFish = fishList.get(i); 
 				currentFish.drawFish();
 				currentFish.updateAndSwim();
+		  
 			} 
         
         } 
 
-    {
-     //attributes
-     var boatX, boatY, boatLength, boatLength, boatHeight, fishingline
-     //constructor
-     boat(var bl, var bh)
-     {
-       	//attributs on left, parameters on the right
-    	boatX = random(150,300);
-   	 	boatY = -10;
-    	boatLength = 200;
-    	boatHeight = 80;
-    	fishingLine = random(250,300);
-    }
+    
+    	class Boat
+    	{
+		 	//attributes
+		    var boatX, boatY, boatLength, boatLength, boatHeight, fishingline;
+		    
+		    //constructor
+		    Boat(var blb, var bhb)
+		    {
+		       	//attributs on left, parameters on the right
+		    	boatLength = blb;
+		    	boatHeight = bhb;
+		    	boatX = random(150,300);
+		   	 	boatY = -10;
+		    	boatLength = 200;
+		    	boatHeight = 80;
+		    	fishingLine = random(250,300);
+		    }
 
-    void drawBoat()
-    {
-// boat
-    fill(74, 97, 186);
-    ellipse(boatX, boatY, boatLength, boatHeight);
-    rect(boatX-100,boatY,boatLength-100,boatHeight-40.51 );
-    rect(boatX-5,boatY+9,boatLength-190,boatHeight-50);
+		    void drawBoat()
+		    {
+		// boat
+		   		fill(74, 97, 186);
+		    	ellipse(boatX, boatY, boatLength, boatHeight);
+		    	rect(boatX-100,boatY,boatLength-100,boatHeight-40.51);
+		    	rect(boatX-5,boatY+9,boatLength-190,boatHeight-50);
 
-    fill(184, 184, 184);
-    ellipse(boatX,boatY,boatLength-20,boatHeight-20);
-    rect(boatX-100,boatY,boatLength-100,boatHeight-51);
-    rect(boatX-5,boatY-1,boatLength-190,boatHeight-50);
-// motor
-    rect(boatX-130,boatY-5,boatLength-182,boatHeight-40);
-    stroke(15, 1, 15);
-    line(boatX-130, 20,boatX-137, 20);
-    line(boatX-137, 10,boatX-137, 30);
-//fishing line
-    line(boatX+100,boatY+10,fishingLine,boatHeight+70);
-}
-
-        
+		    	fill(184, 184, 184);
+		    	ellipse(boatX,boatY,boatLength-20,boatHeight-20);
+		    	rect(boatX-100,boatY,boatLength-100,boatHeight-51);
+		    	rect(boatX-5,boatY-1,boatLength-190,boatHeight-50);
+		// motor
+		    	rect(boatX-130,boatY-5,boatLength-182,boatHeight-40);
+		    	stroke(15, 1, 15);
+		    	line(boatX-130, 20,boatX-137, 20);
+		    	line(boatX-137, 10,boatX-137, 30);
+		//fishing line
+		    	line(boatX+100,boatY+10,fishingLine,boatHeight+70);
+			}
+		}
+		        
         class Fish 
         {
         	//attributes 
