@@ -149,7 +149,7 @@
         		ellipse(centerX, centerY, bodyLength, bodyHeight);
         		// tail
         		var tailWidth = bodyLength/4;
-        		var tailHeight = bodyHeight/2;
+        		var tailHeight = bodyHeight/random(2,4);
         		triangle(centerX-bodyLength/2, centerY,
         		         centerX-bodyLength/2-tailWidth, centerY-tailHeight,
         		         centerX-bodyLength/2-tailWidth, centerY+tailHeight);
@@ -178,12 +178,14 @@
         }
         class Bubble
         {
-	        var bubbleX, bubbleY;
+	        var bubbleX, bubbleY, centerX, centerY;
 	        
 	        Bubble(bX, bY)
 	        {
 	        bubbleY = bY;
 	        bubbleX = bX;
+	        centerX = cX;
+	        centerY = cY;
 	        }
 
 	        void drawBubble(){
@@ -197,8 +199,8 @@
 	        }
 	        void updateBubbles()
 	        {
-	        	if (bubbleY < 10 - 5){
-	        		bubbleY=10;
+	        	if (bubbleY < cY - 5){
+	        		bubbleY=cY;
 	        	}
 	        }
 	        void move()
