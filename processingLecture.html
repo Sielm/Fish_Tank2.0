@@ -15,6 +15,7 @@
  		var boatLength = 200;
 
  		Boat myBoat = new Boat(200,80);
+ 		
         
         int WINDOW_WIDTH = 600;
         int WINDOW_HEIGHT = 600;
@@ -71,7 +72,7 @@
           for(var i = 0; i < fishList.size(); i++) {
 				Fish currentFish = fishList.get(i); 
 				currentFish.drawFish();
-				currentFish.updateAndSwimAndBubbles();
+				currentFish.updateAndSwim();
 		  
 		  
 			} 
@@ -123,8 +124,8 @@
         class Fish 
         {
         	//attributes 
-        	var centerX, centerY, bodyHeight, bodyLength, tailHeight, tailWidth, bodyColor;
-        	
+        	var centerX, centerY, bodyHeight, bodyLength, tailHeight, tailWidth, bodyColor, bubbleY, bubbleX;
+        	Bubble myBubble;
         	//constructor 
         	Fish(var bh, var bl)
         	{
@@ -138,6 +139,7 @@
         		centerY = random(100, 400); 
         		bubbleX = centerX+bodyLength/2;
         		bubbleY = centerY;
+        		myBubble = new Bubble(bubbleX, bubbleY);
         	}
         	
         	void drawFish()
@@ -154,20 +156,15 @@
         		// eye
         		fill(33, 33, 33);
         		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
-
-        		//bubbles
-        		fill(255,255,255);
-        		ellipse(centerX+bodyLength/2,centerY,10,10);
-
-
-        	
         	}
-        	void updateAndSwimAndBubbles()
+        	void updateAndSwim()
         	{
         		swim();
-        		updateFish();	
+        		updateFish();
+        		myBubble.drawBubble();
+        		myBubble.updateAndMove();
         	}
-
+        	
         	void swim()
         	{
         	centerX = centerX + 2;
@@ -178,6 +175,36 @@
         			centerX = 0;
         		}
         	}
+        }
+        class Bubble
+        {
+	        var bubbleX, bubbleY;
+	        
+	        Bubble(bX, bY)
+	        {
+	        bubbleY = bY;
+	        bubbleX = bX;
+	        }
+
+	        void drawBubble(){
+        	fill(255,255,255);
+        	ellipse(bubbleX ,bubbleY,10,10);
+	        }
+	        void updateAndMove()
+	        {
+	        	move();
+	        	updateBubbles();
+	        }
+	        void updateBubbles()
+	        {
+	        	if (bubbleY < 10 - 5){
+	        		bubbleY=10;
+	        	}
+	        }
+	        void move()
+	        {
+	        bubbleY = bubbleY -1;
+	        }
         }
         </script> 
     </head>
