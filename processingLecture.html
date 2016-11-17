@@ -137,7 +137,6 @@
         		bodyColor = color(random(0,255), random(0,255), random(0,255)); 
         		centerX = random(100, 400);
         		centerY = random(100, 400); 
-        		bubbleX = centerX+bodyLength/2;
         		bubbleY = centerY;
         		myBubble = new Bubble(bubbleX, bubbleY);
         	}
@@ -178,19 +177,18 @@
         }
         class Bubble
         {
-	        var bubbleX, bubbleY, centerX, centerY;
+	        var bubbleY, centerX, centerY;
 	        
 	        Bubble(bX, bY)
 	        {
 	        bubbleY = bY;
-	        bubbleX = bX;
 	        centerX = cX;
 	        centerY = cY;
 	        }
 
 	        void drawBubble(){
         	fill(255,255,255);
-        	ellipse(bubbleX ,bubbleY,10,10);
+        	ellipse(cX ,bubbleY,10,10);
 	        }
 	        void updateAndMove()
 	        {
