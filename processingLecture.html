@@ -178,14 +178,12 @@
         }
         class Bubble
         {
-	        var bubbleX, bubbleY, centerX, centerY;
+	        var bubbleX, bubbleY;
 	        
 	        Bubble(bX, bY)
 	        {
-	        bubbleY = bY;
-	        bubbleX = bX;
-	        centerX = cX;
-	        centerY = cY;
+	        	bubbleY = bY;
+	        	bubbleX = bX;
 	        }
 
 	        void drawBubble(){
@@ -195,7 +193,7 @@
 	        void updateAndMove()
 	        {
 	        	move();
-	        	updateBubbles();
+	        	//updateBubbles();
 	        }
 	        void updateBubbles()
 	        {
